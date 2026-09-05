@@ -1,0 +1,91 @@
+import type { Customer, Lead, Deal, Task, Staff, ActivityItem } from "@/types";
+export const staffList: Staff[] = [
+    { id: "s1", name: "Aarav Sharma", email: "aarav@smartcrm.io", role: "Sales Manager", avatarColor: "#3B3486" },
+    { id: "s2", name: "Priya Patel", email: "priya@smartcrm.io", role: "Account Executive", avatarColor: "#0E8388" },
+    { id: "s3", name: "Rohan Mehta", email: "rohan@smartcrm.io", role: "SDR", avatarColor: "#C05621" },
+    { id: "s4", name: "Ananya Desai", email: "ananya@smartcrm.io", role: "CSM", avatarColor: "#805AD5" },
+    { id: "s5", name: "Karan Kapoor", email: "karan@smartcrm.io", role: "Account Executive", avatarColor: "#B7791F" },
+];
+export const customers: Customer[] = [
+    { id: "c1", name: "Vikram Singh", email: "vikram@tecnova.in", company: "Tecnova Solutions", phone: "+91 98210 11234", createdAt: "2025-09-12", churnScore: 0.12, industry: "SaaS", location: "Bangalore, IN", avatarColor: "#3B3486" },
+    { id: "c2", name: "Neha Gupta", email: "neha@quantumretail.com", company: "Quantum Retail", phone: "+91 99887 65432", createdAt: "2025-08-03", churnScore: 0.08, industry: "E-commerce", location: "Mumbai, IN", avatarColor: "#0E8388" },
+    { id: "c3", name: "Arjun Rao", email: "arjun@helixhealth.com", company: "Helix Health Systems", phone: "+91 98123 45678", createdAt: "2025-07-21", churnScore: 0.38, industry: "Healthcare", location: "Hyderabad, IN", avatarColor: "#C05621" },
+    { id: "c4", name: "Mira Iyer", email: "mira@finvista.in", company: "FinVista Capital", phone: "+91 90123 54321", createdAt: "2025-10-01", churnScore: 0.05, industry: "FinTech", location: "Delhi, IN", avatarColor: "#805AD5" },
+    { id: "c5", name: "Rahul Verma", email: "rahul@buildmat.in", company: "BuildMat Industries", phone: "+91 97654 32100", createdAt: "2025-06-18", churnScore: 0.52, industry: "Manufacturing", location: "Pune, IN", avatarColor: "#B7791F" },
+    { id: "c6", name: "Sneha Nair", email: "sneha@logispeed.net", company: "LogiSpeed Logistics", phone: "+91 98333 22111", createdAt: "2025-09-28", churnScore: 0.21, industry: "Logistics", location: "Chennai, IN", avatarColor: "#3182CE" },
+    { id: "c7", name: "Aditya Jain", email: "aditya@edumax.ac.in", company: "EduMax Academy", phone: "+91 99911 44777", createdAt: "2025-11-05", churnScore: 0.15, industry: "EdTech", location: "Jaipur, IN", avatarColor: "#38A169" },
+    { id: "c8", name: "Kavya Menon", email: "kavya@mediacraft.co", company: "MediaCraft Agency", phone: "+91 98400 66200", createdAt: "2025-05-12", churnScore: 0.44, industry: "Marketing", location: "Kochi, IN", avatarColor: "#D53F8C" },
+    { id: "c9", name: "Siddharth Kohli", email: "siddharth@aeroeng.co", company: "AeroEng Components", phone: "+91 98100 99888", createdAt: "2025-08-19", churnScore: 0.09, industry: "Aerospace", location: "Bangalore, IN", avatarColor: "#3B3486" },
+    { id: "c10", name: "Tanvi Shah", email: "tanvi@greenenergysolar.in", company: "Green Energy Solar", phone: "+91 90909 12121", createdAt: "2025-10-22", churnScore: 0.27, industry: "Energy", location: "Ahmedabad, IN", avatarColor: "#0E8388" },
+];
+export const leads: Lead[] = [
+    { id: "l1", customerId: "c1", name: "Enterprise API License", company: "Tecnova Solutions", stage: "proposal", value: 480000, leadScore: 0.91, assignedTo: "s1", lastUpdated: "2026-07-20", notes: "Sent proposal for 200-seat plan. Decision expected next week." },
+    { id: "l2", customerId: "c2", name: "Platform Upgrade", company: "Quantum Retail", stage: "qualified", value: 240000, leadScore: 0.78, assignedTo: "s2", lastUpdated: "2026-07-22", notes: "Tech team reviewing architecture docs." },
+    { id: "l3", customerId: "c3", name: "Patient Module Rollout", company: "Helix Health Systems", stage: "new", value: 820000, leadScore: 0.55, assignedTo: "s3", lastUpdated: "2026-07-25", notes: "First contact made, intro call scheduled." },
+    { id: "l4", customerId: "c4", name: "Wealth Suite Subscription", company: "FinVista Capital", stage: "won", value: 620000, leadScore: 0.97, assignedTo: "s1", lastUpdated: "2026-07-15", notes: "Signed 2-year contract. Kickoff next Monday." },
+    { id: "l5", customerId: "c5", name: "Factory Floor Automation", company: "BuildMat Industries", stage: "contacted", value: 1200000, leadScore: 0.38, assignedTo: "s5", lastUpdated: "2026-07-24", notes: "Budget constraints, exploring phased approach." },
+    { id: "l6", customerId: "c6", name: "Fleet Tracking Tier 2", company: "LogiSpeed Logistics", stage: "proposal", value: 180000, leadScore: 0.82, assignedTo: "s2", lastUpdated: "2026-07-21", notes: "Proposal revised after Q2 feedback." },
+    { id: "l7", customerId: "c7", name: "LMS Expansion", company: "EduMax Academy", stage: "qualified", value: 310000, leadScore: 0.69, assignedTo: "s3", lastUpdated: "2026-07-23", notes: "Evaluating against competitor LMS." },
+    { id: "l8", customerId: "c8", name: "Creative Studio Bundle", company: "MediaCraft Agency", stage: "lost", value: 95000, leadScore: 0.22, assignedTo: "s4", lastUpdated: "2026-07-10", notes: "Lost to cheaper alternative, revisit in Q4." },
+    { id: "l9", customerId: "c9", name: "Supply Chain Predictor", company: "AeroEng Components", stage: "contacted", value: 540000, leadScore: 0.61, assignedTo: "s5", lastUpdated: "2026-07-19", notes: "Strong interest, procurement cycle 90+ days." },
+    { id: "l10", customerId: "c10", name: "Microgrid Monitoring", company: "Green Energy Solar", stage: "new", value: 380000, leadScore: 0.47, assignedTo: "s3", lastUpdated: "2026-07-26", notes: "Inbound lead from website form." },
+    { id: "l11", customerId: "c2", name: "Customer Data Platform Add-on", company: "Quantum Retail", stage: "new", value: 150000, leadScore: 0.65, assignedTo: "s2", lastUpdated: "2026-07-25", notes: "Follow-up to platform upgrade discussions." },
+    { id: "l12", customerId: "c4", name: "Risk Analytics Premium", company: "FinVista Capital", stage: "qualified", value: 410000, leadScore: 0.85, assignedTo: "s1", lastUpdated: "2026-07-22", notes: "Compliance team reviewing." },
+];
+export const deals: Deal[] = [
+    { id: "d1", customerId: "c4", name: "Wealth Suite - 2yr Plan", stage: "Closed Won", value: 620000, winProbability: 100, expectedClose: "2026-07-15", assignedTo: "s1" },
+    { id: "d2", customerId: "c1", name: "Enterprise API - 200 seats", stage: "Proposal", value: 480000, winProbability: 65, expectedClose: "2026-08-10", assignedTo: "s1" },
+    { id: "d3", customerId: "c6", name: "Fleet Tracking Tier 2", stage: "Proposal", value: 180000, winProbability: 60, expectedClose: "2026-08-01", assignedTo: "s2" },
+    { id: "d4", customerId: "c2", name: "Platform Upgrade", stage: "Negotiation", value: 240000, winProbability: 75, expectedClose: "2026-08-05", assignedTo: "s2" },
+    { id: "d5", customerId: "c7", name: "LMS Expansion", stage: "Qualified", value: 310000, winProbability: 40, expectedClose: "2026-08-28", assignedTo: "s3" },
+    { id: "d6", customerId: "c4", name: "Risk Analytics Premium", stage: "Qualified", value: 410000, winProbability: 50, expectedClose: "2026-09-12", assignedTo: "s1" },
+    { id: "d7", customerId: "c9", name: "Supply Chain Predictor", stage: "Discovery", value: 540000, winProbability: 25, expectedClose: "2026-10-01", assignedTo: "s5" },
+    { id: "d8", customerId: "c5", name: "Factory Floor Phase 1", stage: "Discovery", value: 450000, winProbability: 20, expectedClose: "2026-09-20", assignedTo: "s5" },
+    { id: "d9", customerId: "c3", name: "Patient Module Pilot", stage: "Discovery", value: 280000, winProbability: 18, expectedClose: "2026-10-15", assignedTo: "s3" },
+    { id: "d10", customerId: "c8", name: "Creative Studio Bundle", stage: "Closed Lost", value: 95000, winProbability: 0, expectedClose: "2026-07-10", assignedTo: "s4" },
+];
+export const tasks: Task[] = [
+    { id: "t1", title: "Follow up on Tecnova proposal", description: "Send revised pricing sheet after call with Vikram.", status: "todo", priority: "high", dueDate: "2026-07-28", assignee: "s1", relatedTo: "l1", createdAt: "2026-07-25" },
+    { id: "t2", title: "Schedule FinVista kickoff", description: "Coordinate with FinVista onboarding team for Monday kickoff.", status: "in_progress", priority: "high", dueDate: "2026-07-27", assignee: "s1", relatedTo: "l4", createdAt: "2026-07-20" },
+    { id: "t3", title: "Send Quantum retail case studies", description: "Share 3 e-commerce case studies with Neha.", status: "todo", priority: "medium", dueDate: "2026-07-29", assignee: "s2", relatedTo: "l2", createdAt: "2026-07-23" },
+    { id: "t4", title: "Intro call with Helix Health", description: "First discovery call scheduled at 11:00 AM.", status: "todo", priority: "high", dueDate: "2026-07-28", assignee: "s3", relatedTo: "l3", createdAt: "2026-07-26" },
+    { id: "t5", title: "Churn risk call with BuildMat", description: "Rahul flagged at-risk in QBR, schedule urgent call.", status: "in_progress", priority: "high", dueDate: "2026-07-28", assignee: "s4", relatedTo: "c5", createdAt: "2026-07-22" },
+    { id: "t6", title: "LogiSpeed revision walkthrough", description: "Walk Sneha through revised proposal changes.", status: "done", priority: "medium", dueDate: "2026-07-22", assignee: "s2", relatedTo: "l6", createdAt: "2026-07-18" },
+    { id: "t7", title: "EduMax competitor comparison", description: "Build one-page comparison vs. primary LMS competitor.", status: "todo", priority: "medium", dueDate: "2026-07-30", assignee: "s3", relatedTo: "l7", createdAt: "2026-07-24" },
+    { id: "t8", title: "MediaCraft loss postmortem", description: "Internal debrief on lost deal — document learnings.", status: "done", priority: "low", dueDate: "2026-07-18", assignee: "s4", relatedTo: "l8", createdAt: "2026-07-12" },
+    { id: "t9", title: "AeroEng procurement update", description: "Check in with Siddharth on budget approval timeline.", status: "todo", priority: "low", dueDate: "2026-08-02", assignee: "s5", relatedTo: "l9", createdAt: "2026-07-21" },
+    { id: "t10", title: "Green Energy Solar reply", description: "Reply to inbound website lead with product overview.", status: "in_progress", priority: "medium", dueDate: "2026-07-27", assignee: "s3", relatedTo: "l10", createdAt: "2026-07-26" },
+    { id: "t11", title: "Prep QBR for FinVista", description: "Compile usage metrics and upsell opportunities.", status: "todo", priority: "medium", dueDate: "2026-08-05", assignee: "s4", relatedTo: "c4", createdAt: "2026-07-25" },
+    { id: "t12", title: "Team pipeline review", description: "Weekly sync on pipeline health and blockers.", status: "done", priority: "low", dueDate: "2026-07-24", assignee: "s1", relatedTo: "", createdAt: "2026-07-22" },
+];
+export const activities: ActivityItem[] = [
+    { id: "a1", type: "meeting", customerId: "c1", title: "Proposal review with Tecnova", description: "Detailed walkthrough of SOW and pricing tiers.", timestamp: "2026-07-26T14:30:00Z", userId: "s1" },
+    { id: "a2", type: "email", customerId: "c4", title: "Kickoff agenda sent", description: "Sent welcome pack and kickoff agenda to FinVista.", timestamp: "2026-07-26T09:15:00Z", userId: "s1" },
+    { id: "a3", type: "call", customerId: "c5", title: "Churn mitigation call", description: "Spoke with Rahul regarding Q3 concerns and roadmap.", timestamp: "2026-07-25T17:45:00Z", userId: "s4" },
+    { id: "a4", type: "task", title: "Revised proposal uploaded", description: "LogiSpeed Tier 2 proposal v2 attached to deal.", timestamp: "2026-07-25T12:05:00Z", userId: "s2" },
+    { id: "a5", type: "note", customerId: "c3", title: "Key contacts captured", description: "Added CTO and Head of Clinical Informatics contacts.", timestamp: "2026-07-24T19:22:00Z", userId: "s3" },
+    { id: "a6", type: "meeting", customerId: "c2", title: "Tech deep-dive with Quantum team", description: "Architecture review and integration discussion.", timestamp: "2026-07-24T10:30:00Z", userId: "s2" },
+    { id: "a7", type: "email", customerId: "c10", title: "Outbound intro reply sent", description: "Acknowledged inbound and scheduled product tour.", timestamp: "2026-07-23T15:10:00Z", userId: "s3" },
+    { id: "a8", type: "call", customerId: "c7", title: "EduMax discovery follow-up", description: "Confirmed evaluation team and timeline.", timestamp: "2026-07-22T11:00:00Z", userId: "s3" },
+];
+export const revenueByMonth = [
+    { month: "Jan", revenue: 380000 },
+    { month: "Feb", revenue: 520000 },
+    { month: "Mar", revenue: 820000 },
+    { month: "Apr", revenue: 790000 },
+    { month: "May", revenue: 760000 },
+    { month: "Jun", revenue: 720000 },
+    { month: "Jul", revenue: 680000 },
+    { month: "Aug", revenue: 730000 },
+    { month: "Sep", revenue: 840000 },
+    { month: "Oct", revenue: 700000 },
+    { month: "Nov", revenue: 650000 },
+    { month: "Dec", revenue: 710000 },
+];
+export const funnelData = [
+    { stage: "Leads", count: 142, fill: "#3B3486" },
+    { stage: "Contacted", count: 98, fill: "#4c54ab" },
+    { stage: "Qualified", count: 63, fill: "#38a0a2" },
+    { stage: "Proposal", count: 34, fill: "#0E8388" },
+    { stage: "Won", count: 19, fill: "#0c6a70" },
+];

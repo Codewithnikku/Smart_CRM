@@ -1,0 +1,249 @@
+{
+  "info": {
+    "name": "Smart CRM API",
+    "description": "Postman collection for testing the Smart CRM backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/healthz",
+          "host": ["{{baseUrl}}"],
+          "path": ["healthz"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "List Customers",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/customers",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "Get Customer Detail",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/c1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "customers", "c1"]
+        }
+      }
+    },
+    {
+      "name": "Update Churn Score",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"churn_score\": 0.42\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/c1/churn-score",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "customers", "c1", "churn-score"]
+        }
+      }
+    },
+    {
+      "name": "List Leads",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/leads",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "leads"]
+        }
+      }
+    },
+    {
+      "name": "Update Lead Stage",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"stage\": \"qualified\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/leads/l1/stage",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "leads", "l1", "stage"]
+        }
+      }
+    },
+    {
+      "name": "List Deals",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/deals",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "deals"]
+        }
+      }
+    },
+    {
+      "name": "List Tasks",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "Update Task Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"done\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/t1/status",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "t1", "status"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard KPIs",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/kpis",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "kpis"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Revenue",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/revenue",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "revenue"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Funnel",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/funnel",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "funnel"]
+        }
+      }
+    },
+    {
+      "name": "Dashboard Activity",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/activity",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "activity"]
+        }
+      }
+    },
+    {
+      "name": "At Risk Customers",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/dashboard/at-risk",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "dashboard", "at-risk"]
+        }
+      }
+    },
+    {
+      "name": "List Staff",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/staff",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "staff"]
+        }
+      }
+    },
+    {
+      "name": "Get Staff Detail",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/staff/s1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "staff", "s1"]
+        }
+      }
+    },
+    {
+      "name": "AI Lead Insights",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"leads\": [\n    {\n      \"id\": \"l1\",\n      \"name\": \"Enterprise API License\",\n      \"company\": \"Tecnova Solutions\",\n      \"stage\": \"proposal\",\n      \"value\": 480000,\n      \"leadScore\": 0.91,\n      \"lastUpdated\": \"2026-08-02T10:15:00Z\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/ai/lead-insights",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "ai", "lead-insights"]
+        }
+      }
+    }
+  ]
+}
