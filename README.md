@@ -572,4 +572,5 @@ These users are seeded by `database/seed_data.sql`:
 
 **End of documentation.** Good luck with the presentation! 🎯
 #   S m a r t _ C R M  
+ #   S m a r t _ C R M  
  
