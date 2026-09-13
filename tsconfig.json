@@ -25,12 +25,12 @@
     "baseUrl": "./",
     "paths": {
       "@/*": [
-        "./src/*"
+        "./Frontend/src/*"
       ]
     }
   },
   "include": [
-    "src",
+    "Frontend/src",
     "api"
   ]
 }
