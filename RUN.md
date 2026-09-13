@@ -69,4 +69,4 @@ The frontend will start on `http://localhost:5173`.
 ## 9. Notes
 - The backend uses Express and MySQL.
 - The frontend uses Vite with React and Tailwind CSS.
-- Database setup is automated by `scripts/setup_db.ts`.
+- Database setup is automated by `Backend/scripts/setup_db.ts`.

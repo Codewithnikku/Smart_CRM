@@ -509,8 +509,9 @@ npm run build    # Production build → dist/
 
 ```
 Mini_Project/
-├── api/                         # Express backend (Node + TS via tsx)
-│   ├── routes/                  # One Router per domain entity
+├── Backend/                     # Server-side application code
+│   ├── api/                     # Express backend (Node + TS via tsx)
+│   │   ├── routes/              # One Router per domain entity
 │   │   ├── auth.ts
 │   │   ├── customers.ts
 │   │   ├── dashboard.ts
@@ -519,8 +520,10 @@ Mini_Project/
 │   │   ├── staff.ts
 │   │   ├── tasks.ts
 │   │   └── ai.ts                # Python scorer bridge
-│   ├── db.ts                    # mysql2 pool + helpers
-│   └── server.ts                # Express app + CORS + routes
+│   │   ├── db.ts                # mysql2 pool + helpers
+│   │   └── server.ts            # Express app + CORS + routes
+│   ├── python/                  # Pure-Python lead scorer and tests
+│   └── scripts/                 # Backend setup and verification helpers
 │
 ├── database/                    # All SQL artefacts
 │   ├── migrations/              # Flyway-style versioned DDL
@@ -534,37 +537,22 @@ Mini_Project/
 │   ├── queries.sql              # Example SELECT queries (exam Q&A ref)
 │   └── users.sql                # Staff auth records
 │
-├── python/
-│   ├── lead_insights.py         # Pure-Python lead scorer
-│   └── tests/test_lead_insights.py
-│
-├── scripts/                     # One-off helper scripts
-│   └── setup_db.ts              # Runs schema + seeds in order
-│
-├── src/                         # React / Vite frontend
-│   ├── api/client.ts            # typed fetch wrapper for all /api/* endpoints
-│   ├── components/              # Layout, Sidebar, Topbar, AdminPanel, Empty
-│   ├── data/mockData.ts         # Fallback seed data (used when API offline)
-│   ├── hooks/useTheme.ts        # Light/Dark mode hook
-│   ├── lib/utils.ts             # cn() — clsx + tailwind-merge
-│   ├── pages/                   # React Router pages
-│   │   ├── Dashboard.tsx        # KPIs, charts, AI panel
-│   │   ├── Customers.tsx        # Searchable table
-│   │   ├── CustomerDetail.tsx   # 360° account profile
-│   │   ├── Pipeline.tsx         # Drag-drop Kanban
-│   │   ├── Deals.tsx
-│   │   ├── Tasks.tsx            # Kanban tasks
-│   │   ├── Login.tsx
-│   │   └── UserProfile.tsx
-│   ├── store/crmStore.ts        # Zustand store: state + hydrators + selectors
-│   ├── types/index.ts           # Customer, Lead, Deal, Task, Staff interfaces
-│   ├── App.tsx                  # React Router routes
-│   ├── main.tsx
-│   └── index.css                # Tailwind directives + design tokens
-│
-├── public/favicon.svg
+├── Frontend/                    # React / Vite frontend
+│   ├── src/
+│   │   ├── api/client.ts        # typed fetch wrapper for all /api/* endpoints
+│   │   ├── components/          # Layout, Sidebar, Topbar, AdminPanel, Empty
+│   │   ├── data/mockData.ts     # Fallback seed data (used when API offline)
+│   │   ├── hooks/useTheme.ts    # Light/Dark mode hook
+│   │   ├── lib/utils.ts         # cn() — clsx + tailwind-merge
+│   │   ├── pages/               # React Router pages
+│   │   ├── store/crmStore.ts    # Zustand store: state + hydrators + selectors
+│   │   ├── types/index.ts       # Customer, Lead, Deal, Task, Staff interfaces
+│   │   ├── App.tsx              # React Router routes
+│   │   ├── main.tsx
+│   │   └── index.css            # Tailwind directives + design tokens
+│   ├── public/favicon.svg
+│   └── index.html               # Vite entry
 ├── dist/                        # Build output (auto-generated)
-├── index.html                   # Vite entry
 ├── package.json
 ├── vite.config.ts               # Chunk splitting + TS paths
 ├── tailwind.config.js           # Brand/accent/ink tokens + animations
