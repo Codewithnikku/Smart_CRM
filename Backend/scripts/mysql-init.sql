@@ -1,0 +1,11 @@
+
+
+
+FLUSH PRIVILEGES;
+CREATE USER IF NOT EXISTS 'smartcrm_app'@'localhost' IDENTIFIED BY 'SmartCRM@2026';
+ALTER USER 'smartcrm_app'@'localhost' IDENTIFIED BY 'SmartCRM@2026';
+GRANT ALL PRIVILEGES ON smart_crm.* TO 'smartcrm_app'@'localhost';
+GRANT CREATE, ALTER, DROP, CREATE VIEW, SHOW VIEW, PROCESS,
+      RELOAD, SHUTDOWN, SUPER ON *.* TO 'smartcrm_app'@'localhost';
+GRANT SYSTEM_VARIABLES_ADMIN, SESSION_VARIABLES_ADMIN ON *.* TO 'smartcrm_app'@'localhost';
+FLUSH PRIVILEGES;

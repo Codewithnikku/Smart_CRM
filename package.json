@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:server": "tsx watch api/server.ts",
+    "dev:server": "tsx watch Backend/api/server.ts",
     "dev:all": "concurrently -n WEB,API -c cyan,magenta \"npm:dev\" \"npm:dev:server\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
-    "db:setup": "tsx scripts/setup_db.ts"
+    "db:setup": "tsx Backend/scripts/setup_db.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
