@@ -7,12 +7,12 @@
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
-2. [Tech Stack & Architecture](#2-tech-stack--architecture)
+2. [Tech Stack &amp; Architecture](#2-tech-stack--architecture)
 3. [Database Design (ER Schema)](#3-database-design-er-schema)
 4. [10-Minute Demo Script (Timed)](#4-10-minute-demo-script-timed)
 5. [Key Features Deep-Dive](#5-key-features-deep-dive)
 6. [API Endpoints Reference](#6-api-endpoints-reference)
-7. [Scalability & Best Practices](#7-scalability--best-practices)
+7. [Scalability &amp; Best Practices](#7-scalability--best-practices)
 8. [Vercel Deployment Guide](#8-vercel-deployment-guide)
 9. [Local Development Setup](#9-local-development-setup)
 10. [Folder Structure](#10-folder-structure)
@@ -60,10 +60,10 @@ The system falls back gracefully to embedded mock data when the MySQL backend is
 └──────────────────────────────────────────────────────────────┘
 ```
 
-| Layer      | Technologies                                                                 |
-|------------|------------------------------------------------------------------------------|
+| Layer      | Technologies                                                                |
+| ---------- | --------------------------------------------------------------------------- |
 | Frontend   | React 18, TypeScript, Vite, Tailwind CSS, Zustand, Recharts, React Router 7 |
-| Backend    | Node.js, Express 5, mysql2/promise, CORS, dotenv                             |
+| Backend    | Node.js, Express 5, mysql2/promise, CORS, dotenv                            |
 | Database   | MySQL 8+ / MariaDB 10+ with InnoDB, utf8mb4, Indexes, Views                 |
 | AI Module  | Python 3.10+ lead scoring engine (spawned via child_process)                |
 | Deployment | Vercel (frontend static) + any Node host (Railway/Render) + remote MySQL    |
@@ -74,18 +74,18 @@ The system falls back gracefully to embedded mock data when the MySQL backend is
 
 ### Core Tables
 
-| Table            | Purpose                                      | Key Fields                                           |
-|------------------|----------------------------------------------|------------------------------------------------------|
-| **`staff`**      | Sales team / users                           | `id`, `name`, `email`, `password_hash`, `role`       |
-| **`customers`**  | Company contacts (accounts)                  | `id`, `name`, `company`, `email`, `industry`, `churn_score` |
-| **`leads`**      | Sales pipeline opportunities                 | `id`, `customer_id`, `stage` (enum), `value`, `lead_score`, `assigned_to` |
-| **`deals`**      | Negotiated contracts                         | `id`, `customer_id`, `stage`, `value`, `win_probability`, `expected_close` |
-| **`tasks`**      | Follow-ups & reminders                       | `id`, `title`, `status` (enum), `priority`, `due_date`, `assignee` |
-| **`interactions`** | Call/email/note history per customer      | `id`, `type` (enum), `customer_id`, `user_id`, `timestamp` |
-| **`lead_scores`**   | AI scoring cache (per-lead)             | `id`, `lead_id` (FK→UNIQUE), `score`, `features_json` |
-| **`churn_scores`**  | Customer churn scoring history           | `id`, `customer_id` (FK→UNIQUE), `score`, `features_json` |
-| **`monthly_revenue`** | Materialized revenue summary view       | `month`, `won_value`, `pipeline_value`, `deal_count`  |
-| **`funnel_summary`**  | Stage conversion counts                 | `stage`, `lead_count`, `total_value`, `pct_of_leads`  |
+| Table                         | Purpose                              | Key Fields                                                                             |
+| ----------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
+| **`staff`**           | Sales team / users                   | `id`, `name`, `email`, `password_hash`, `role`                               |
+| **`customers`**       | Company contacts (accounts)          | `id`, `name`, `company`, `email`, `industry`, `churn_score`                |
+| **`leads`**           | Sales pipeline opportunities         | `id`, `customer_id`, `stage` (enum), `value`, `lead_score`, `assigned_to`  |
+| **`deals`**           | Negotiated contracts                 | `id`, `customer_id`, `stage`, `value`, `win_probability`, `expected_close` |
+| **`tasks`**           | Follow-ups & reminders               | `id`, `title`, `status` (enum), `priority`, `due_date`, `assignee`         |
+| **`interactions`**    | Call/email/note history per customer | `id`, `type` (enum), `customer_id`, `user_id`, `timestamp`                   |
+| **`lead_scores`**     | AI scoring cache (per-lead)          | `id`, `lead_id` (FK→UNIQUE), `score`, `features_json`                         |
+| **`churn_scores`**    | Customer churn scoring history       | `id`, `customer_id` (FK→UNIQUE), `score`, `features_json`                     |
+| **`monthly_revenue`** | Materialized revenue summary view    | `month`, `won_value`, `pipeline_value`, `deal_count`                           |
+| **`funnel_summary`**  | Stage conversion counts              | `stage`, `lead_count`, `total_value`, `pct_of_leads`                           |
 
 ### Key Indexes
 
@@ -214,6 +214,7 @@ TOTAL: 10:00
 > **Script:** *"Customers page. We can search by name/company/email, filter by industry (10 sectors), and filter by churn tier. Let's filter High risk (≥40%)."*
 
 **Actions:**
+
 - Industry dropdown → *"See the 10 different sectors seeded."*
 - Churn risk dropdown → select **High risk (≥40%)** → shows ~2 rows
 - Reset churn filter back to **All**
@@ -222,6 +223,7 @@ TOTAL: 10:00
 > **Script:** *"Inside a customer profile, we have contact info, churn risk meter with recommended action, and 3 sections: their leads, active deals, and an interactions timeline. Note that the header banner is colour-coded per customer using the `avatar_color` column."*
 
 Scroll and point to:
+
 - **Churn Risk = 12% (Healthy)** → green progress bar
 - **Leads card:** Enterprise API License, proposal stage, ₹480,000, score 91%
 - **Activity Timeline:** meeting/email/call icons with staff attribution
@@ -235,6 +237,7 @@ Scroll and point to:
 > **Script:** *"This is the team's favourite page — a 6-column Kanban board: New → Contacted → Qualified → Proposal → Won → Lost. Each card is draggable; when you drop it into another column, it calls PATCH /api/leads/:id/stage which updates both the stage and `last_updated` column atomically."*
 
 **Action: Demo drag-drop**
+
 - Pick **Patient Module Rollout (Helix Health)** from the **New** column
 - Drop into **Contacted** column
 - Wait 0.5s (store updates optimistically, then syncs with API)
@@ -283,6 +286,7 @@ Walk through the 3 mini-forms:
 > **Script:** *"To wrap up: this project is production-ready for Vercel. The frontend is statically built — `npm run build` produces chunk-split bundles in `dist/` with vendor, charts, and icons split into separate JS files for caching. We ship a `vercel.json` with SPA rewrites so deep links like /customers/c1 work. CORS is permissive for *.vercel.app origins, and the API base URL can be overridden with VITE_API_BASE env var if we put the Express backend on Railway or Render."*
 
 Close with:
+
 - *"Scalability features: MySQL connection pool (20 conns), parameterized queries everywhere (no SQL injection risk), query result limits (200 rows on list endpoints), and parallel API hydration. On the DX side: TypeScript strict-friendly build, Zustand selector optimization, and Tailwind with custom design tokens for the brand/accent/ink palette."*
 - *"That's the 10-minute tour. Any questions?"*
 
@@ -291,23 +295,28 @@ Close with:
 ## 5. Key Features Deep-Dive
 
 ### 5.1 Churn Risk Detection
+
 - **Data model:** `DECIMAL(5,4)` column on customers
 - **Risk tiers:** Safe (<10%) → Monitor (10-25%) → At Risk (25-40%) → Critical (≥40%)
 - **UI:** Badge colours, gradient progress bars, contextual recommendation copy in Customer Detail
 - **SQL endpoint:** PATCH `/api/customers/:id/churn-score` validates `0 ≤ score ≤ 1`
 
 ### 5.2 Optimistic UI Updates
-The Zustand store in [crmStore.ts](file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/src/store/crmStore.ts) wraps every write with a try/catch:
+
+The Zustand store in [crmStore.ts](<file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/src/store/crmStore.ts>) wraps every write with a try/catch:
+
 1. Optimistically mutate local state
 2. Fire the API in parallel
 3. If API fails → silently ignore OR roll back (pattern shown for lead stage and tasks)
 
 ### 5.3 API Fallback / Graceful Degradation
-Every `hydrateFromApi()` call is wrapped in a catch. If the MySQL/Express backend isn't available, the frontend runs 100% on embedded mock data from [mockData.ts](file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/src/data/mockData.ts) — including leads, deals, tasks, activities, revenue chart, and funnel.
+
+Every `hydrateFromApi()` call is wrapped in a catch. If the MySQL/Express backend isn't available, the frontend runs 100% on embedded mock data from [mockData.ts](<file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/src/data/mockData.ts>) — including leads, deals, tasks, activities, revenue chart, and funnel.
 
 This is why the **Vercel static demo is fully usable without MySQL running**.
 
 ### 5.4 Parallel Hydration
+
 ```ts
 await Promise.all([
   api.listCustomers(),    // MySQL
@@ -325,6 +334,7 @@ await Promise.all([
 9 concurrent API calls → React mounts with a complete store instead of waterfalling requests.
 
 ### 5.5 Dark Mode
+
 Toggle via the DBA gear panel (sun/moon icons). Uses `darkMode: "class"` in Tailwind and persists to `localStorage` with OS preference fallback.
 
 ---
@@ -334,44 +344,49 @@ Toggle via the DBA gear panel (sun/moon icons). Uses `darkMode: "class"` in Tail
 All endpoints live under `/api/*` (Express routes in `api/routes/`).
 
 ### Auth
-| Method | Path                  | Body { email, password } | Returns Staff JSON or 401 |
-|--------|-----------------------|--------------------------|---------------------------|
-| POST   | `/api/auth/login`     | ✅                        | [auth.ts](file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/api/routes/auth.ts) |
+
+| Method | Path                | Body { email, password } | Returns Staff JSON or 401                                                                               |
+| ------ | ------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------- |
+| POST   | `/api/auth/login` | ✅                       | [auth.ts](<file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/api/routes/auth.ts>) |
 
 ### Dashboard
-| Method | Path                        | Query           | Returns                          |
-|--------|-----------------------------|-----------------|----------------------------------|
-| GET    | `/api/dashboard/kpis`       | —               | Revenue, leads, conv%, churn count |
-| GET    | `/api/dashboard/revenue`    | —               | 12 months from `monthly_revenue` view |
-| GET    | `/api/dashboard/funnel`     | —               | Stages from `funnel_summary` view |
-| GET    | `/api/dashboard/activity`   | —               | Last 20 interactions (joined)    |
-| GET    | `/api/dashboard/at-risk`    | —               | Customers with churn ≥ 0.35 (LIMIT 10) |
+
+| Method | Path                        | Query | Returns                                 |
+| ------ | --------------------------- | ----- | --------------------------------------- |
+| GET    | `/api/dashboard/kpis`     | —    | Revenue, leads, conv%, churn count      |
+| GET    | `/api/dashboard/revenue`  | —    | 12 months from`monthly_revenue` view  |
+| GET    | `/api/dashboard/funnel`   | —    | Stages from`funnel_summary` view      |
+| GET    | `/api/dashboard/activity` | —    | Last 20 interactions (joined)           |
+| GET    | `/api/dashboard/at-risk`  | —    | Customers with churn ≥ 0.35 (LIMIT 10) |
 
 ### CRUD
-| Method | Path                                       | Query / Body                                |
-|--------|--------------------------------------------|---------------------------------------------|
-| GET    | `/api/customers`                           | `search`, `industry`, `churn_tier`          |
-| GET    | `/api/customers/:id`                       | Returns customer + leads + deals + interactions |
-| PATCH  | `/api/customers/:id/churn-score`           | `{ churn_score: number }`                   |
-| GET    | `/api/leads`                               | `stage`                                     |
-| PATCH  | `/api/leads/:id/stage`                     | `{ stage: LeadStage }`                      |
-| GET    | `/api/deals`                               | `search`                                    |
-| GET    | `/api/tasks`                               | — (ordered by status → priority → due)      |
-| PATCH  | `/api/tasks/:id/status`                    | `{ status? }` (auto-cycle if omitted)       |
-| GET    | `/api/staff`                               | —                                           |
-| GET    | `/api/staff/:id`                           | —                                           |
-| POST   | `/api/ai/lead-insights`                    | `{ leads: Lead[] }` → Python scorer JSON    |
+
+| Method | Path                               | Query / Body                                    |
+| ------ | ---------------------------------- | ----------------------------------------------- |
+| GET    | `/api/customers`                 | `search`, `industry`, `churn_tier`        |
+| GET    | `/api/customers/:id`             | Returns customer + leads + deals + interactions |
+| PATCH  | `/api/customers/:id/churn-score` | `{ churn_score: number }`                     |
+| GET    | `/api/leads`                     | `stage`                                       |
+| PATCH  | `/api/leads/:id/stage`           | `{ stage: LeadStage }`                        |
+| GET    | `/api/deals`                     | `search`                                      |
+| GET    | `/api/tasks`                     | — (ordered by status → priority → due)       |
+| PATCH  | `/api/tasks/:id/status`          | `{ status? }` (auto-cycle if omitted)         |
+| GET    | `/api/staff`                     | —                                              |
+| GET    | `/api/staff/:id`                 | —                                              |
+| POST   | `/api/ai/lead-insights`          | `{ leads: Lead[] }` → Python scorer JSON     |
 
 ### Health
-| Method | Path          | Returns DB status + app version |
-|--------|---------------|----------------------------------|
-| GET    | `/healthz`    | `{ ok: true, database: "connected", version: "1.0.0" }` |
+
+| Method | Path         | Returns DB status + app version                           |
+| ------ | ------------ | --------------------------------------------------------- |
+| GET    | `/healthz` | `{ ok: true, database: "connected", version: "1.0.0" }` |
 
 ---
 
 ## 7. Scalability & Best Practices
 
 ### ✅ Done
+
 - **MySQL connection pooling** — 20 connections, 60s idle timeout, keepalive enabled
 - **Parameterized queries** — **no SQL string interpolation anywhere** (grep: all route handlers use `?` placeholders)
 - **Payload size cap** — `express.json({ limit: "2mb" })` to prevent body-based DoS
@@ -381,6 +396,7 @@ All endpoints live under `/api/*` (Express routes in `api/routes/`).
 - **CORS with origin safelist** — localhost + vercel.app wildcard + explicit comma-list
 
 ### 🚦 Easy next steps (for post-demo scaling)
+
 - Rate limiting with `express-rate-limit`
 - JWT sessions instead of localStorage-only login
 - Password hashing: replace plain `password_hash` compare with `bcrypt`
@@ -392,9 +408,10 @@ All endpoints live under `/api/*` (Express routes in `api/routes/`).
 
 ## 8. Vercel Deployment Guide
 
-This project ships with a production-ready [vercel.json](file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/vercel.json). Two deployment modes:
+This project ships with a production-ready [vercel.json](<file:///c:/Users/nakul/OneDrive/Documents/Third%20Year/DBMS/Mini_Project/vercel.json>). Two deployment modes:
 
 ### 🅰️ Mode A — Frontend Only (Static, Works Out of the Box)
+
 *(Used for the 10-min demo. All mock data embedded. Login always succeeds with the seeded user.)*
 
 1. Push this repository to GitHub.
@@ -405,6 +422,7 @@ This project ships with a production-ready [vercel.json](file:///c:/Users/nakul/
 6. Click Deploy → wait ~60 s → open the `*.vercel.app` URL.
 
 ### 🅱️ Mode B — Full Stack (Frontend + Remote MySQL + Hosted API)
+
 *(For real usage. Requires a public MySQL and a Node host.)*
 
 1. **Host MySQL publicly**: PlanetScale, Aiven MySQL, Railway MySQL, AWS RDS, or Supabase (which exposes MySQL port).
@@ -423,17 +441,20 @@ This project ships with a production-ready [vercel.json](file:///c:/Users/nakul/
 ## 9. Local Development Setup
 
 ### Prerequisites
+
 - Node.js ≥ 18
 - MySQL ≥ 8 or MariaDB ≥ 10.5 running locally (XAMPP works great)
 - Optional: Python ≥ 3.10 for AI scoring module
 
 ### 1. Install
+
 ```bash
 cd "c:\Users\nakul\OneDrive\Documents\Third Year\DBMS\Mini_Project"
 npm install
 ```
 
 ### 2. Environment
+
 Copy `.env.example` → `.env` and set MySQL creds. **Do NOT commit `.env`** (it's already gitignored).
 
 ```env
@@ -447,29 +468,35 @@ WEB_ORIGIN=http://localhost:5173,http://127.0.0.1:5173
 ```
 
 ### 3. Seed the Database
+
 Runs schema, indexes, views, and sample data all at once:
+
 ```bash
 npm run db:setup
 ```
 
 ### 4. Run Both Servers
+
 ```bash
 npm run dev:all   # WEB :5173 + API :4000 together in one terminal
 ```
 
 Or separately:
+
 ```bash
 npm run dev:server   # Express on http://localhost:4000
 npm run dev          # Vite    on http://localhost:5173
 ```
 
 ### 5. Verify
+
 ```bash
 curl http://localhost:4000/healthz
 # → {"ok":true,"database":"connected","version":"1.0.0"}
 ```
 
 ### 6. Quality Gates
+
 ```bash
 npm run check    # TypeScript strict compile (no emit)
 npm run lint     # ESLint + typescript-eslint
@@ -558,19 +585,21 @@ Mini_Project/
 
 These users are seeded by `database/seed_data.sql`:
 
-| Email                   | Password      | Role               |
-|-------------------------|---------------|--------------------|
-| `aarav@smartcrm.io`     | `smartcrm123` | Sales Manager      |
-| `priya@smartcrm.io`     | `smartcrm123` | Account Executive  |
-| `rohan@smartcrm.io`     | `smartcrm123` | SDR                |
-| `ananya@smartcrm.io`    | `smartcrm123` | CSM                |
-| `karan@smartcrm.io`     | `smartcrm123` | Account Executive  |
+| Email                  | Password        | Role              |
+| ---------------------- | --------------- | ----------------- |
+| `aarav@smartcrm.io`  | `smartcrm123` | Sales Manager     |
+| `priya@smartcrm.io`  | `smartcrm123` | Account Executive |
+| `rohan@smartcrm.io`  | `smartcrm123` | SDR               |
+| `ananya@smartcrm.io` | `smartcrm123` | CSM               |
+| `karan@smartcrm.io`  | `smartcrm123` | Account Executive |
 
 > 💡 **For the demo, use:** `aarav@smartcrm.io` / `smartcrm123` (Sales Manager account)
 
 ---
 
 **End of documentation.** Good luck with the presentation! 🎯
-#   S m a r t _ C R M  
- #   S m a r t _ C R M  
- 
+#� �S�m�a�r�t�_�C�R�M�
+�
+�#� �S�m�a�r�t�_�C�R�M�
+�
+�
