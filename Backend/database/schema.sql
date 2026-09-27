@@ -1,16 +1,9 @@
 
-
-
-
-
 CREATE DATABASE IF NOT EXISTS smart_crm
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;
 
 USE smart_crm;
-
-
-
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (

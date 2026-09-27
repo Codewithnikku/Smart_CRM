@@ -1,15 +1,4 @@
-
-
-
-
-
-
 USE smart_crm;
-
-
-
-
-
 
 CREATE DATABASE IF NOT EXISTS smart_crm
   DEFAULT CHARACTER SET utf8mb4

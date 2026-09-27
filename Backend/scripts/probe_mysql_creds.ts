@@ -16,8 +16,6 @@ const combos: Array<{
     { host: "127.0.0.1", port: 3306, user: "root", password: "123456" },
     { host: "127.0.0.1", port: 3306, user: "root", password: "root@123" },
     { host: "127.0.0.1", port: 3306, user: "root", password: "Pass@123" },
-    { host: "127.0.0.1", port: 3306, user: "root", password: "nakul" },
-    { host: "127.0.0.1", port: 3306, user: "root", password: "Nakul@123" },
     { host: "localhost", port: 3306, user: "pma", password: "" },
     { host: "localhost", port: 3308, user: "root", password: "" },
     { host: "localhost", port: 3307, user: "root", password: "" },

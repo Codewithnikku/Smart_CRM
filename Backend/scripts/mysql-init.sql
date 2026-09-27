@@ -1,6 +1,4 @@
 
-
-
 FLUSH PRIVILEGES;
 CREATE USER IF NOT EXISTS 'smartcrm_app'@'localhost' IDENTIFIED BY 'SmartCRM@2026';
 ALTER USER 'smartcrm_app'@'localhost' IDENTIFIED BY 'SmartCRM@2026';
