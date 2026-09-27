@@ -24,17 +24,6 @@ ALTER TABLE staff
 ALTER TABLE staff
   ADD INDEX idx_staff_role (role);
 
-
-
-
-
-
-
-
-
-
-
-
 INSERT INTO staff (id, name, email, role, avatar_color) VALUES
 ('s6','Ishita Verma','ishita@smartcrm.io','SDR','#D53F8C');
 

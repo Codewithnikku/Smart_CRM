@@ -1,7 +1,3 @@
-
-
-
-
 USE smart_crm;
 
 
